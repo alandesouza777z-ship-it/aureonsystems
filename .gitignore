@@ -1,0 +1,6 @@
+work/
+outputs/
+.vercel/
+node_modules/
+*.log
+

@@ -1,0 +1,18 @@
+{
+  "name": "aureon-systems-project-intake",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Formulario de levantamento de requisitos para projetos da Aureon Sistemas.",
+  "scripts": {
+    "build": "echo Static site ready",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "aureon",
+    "formulario",
+    "requisitos",
+    "vercel"
+  ],
+  "license": "UNLICENSED"
+}
+

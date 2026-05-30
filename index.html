@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Levantamento de requisitos para projetos de sistemas, sites, automações e soluções digitais da Aureon Sistemas."
+    />
+    <title>Levantamento de Projeto - Aureon Sistemas</title>
+    <link rel="icon" type="image/jpeg" href="./assets/aureon-logo.jpg" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="intro-panel" aria-labelledby="page-title">
+        <div class="brand-lockup" aria-label="Aureon Sistemas">
+          <img class="brand-logo" src="./assets/aureon-logo.jpg" alt="Logo da Aureon Sistemas" />
+          <span>
+            <strong>Aureon Sistemas</strong>
+            <small>Sistemas, sites, automações e soluções digitais</small>
+          </span>
+        </div>
+
+        <div class="intro-copy">
+          <p class="eyebrow">Levantamento de projeto</p>
+          <h1 id="page-title">Levantamento de Projeto - Aureon Sistemas</h1>
+          <p>
+            Preencha as informações abaixo para que a equipe técnica avalie o
+            escopo, funcionalidades, integrações, prazos e investimento
+            necessário para sua solução.
+          </p>
+        </div>
+
+        <div class="assurance-strip" aria-label="Resumo do processo">
+          <span>Escopo técnico</span>
+          <span>Proposta comercial</span>
+          <span>Aprovação formal</span>
+        </div>
+      </section>
+
+      <form class="project-form" id="projectForm" novalidate>
+        <div class="form-header">
+          <div>
+            <p class="eyebrow">Briefing técnico</p>
+            <h2>Informações para orçamento</h2>
+          </div>
+          <p class="form-status" id="draftStatus" aria-live="polite">
+            Rascunho salvo neste dispositivo.
+          </p>
+        </div>
+
+        <section class="form-section" aria-labelledby="client-data-title">
+          <div class="section-heading">
+            <span class="section-number">01</span>
+            <div>
+              <h3 id="client-data-title">Dados do cliente</h3>
+              <p>Informações para contato e identificação da empresa.</p>
+            </div>
+          </div>
+
+          <div class="field-grid two-columns">
+            <div class="field">
+              <label for="fullName">Nome completo <span>*</span></label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+              <small class="error-message">Informe seu nome completo.</small>
+            </div>
+
+            <div class="field">
+              <label for="companyName">Nome da empresa <span>*</span></label>
+              <input id="companyName" name="companyName" type="text" autocomplete="organization" required />
+              <small class="error-message">Informe o nome da empresa.</small>
+            </div>
+
+            <div class="field">
+              <label for="whatsapp">WhatsApp <span>*</span></label>
+              <input
+                id="whatsapp"
+                name="whatsapp"
+                type="tel"
+                inputmode="tel"
+                placeholder="(00) 00000-0000"
+                autocomplete="tel"
+                required
+              />
+              <small class="error-message">Informe um WhatsApp válido.</small>
+            </div>
+
+            <div class="field">
+              <label for="email">E-mail <span>*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+              <small class="error-message">Informe um e-mail válido.</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="project-title">
+          <div class="section-heading">
+            <span class="section-number">02</span>
+            <div>
+              <h3 id="project-title">Sobre o projeto</h3>
+              <p>Contexto do negócio, problema central e usuários envolvidos.</p>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="mainGoal">Qual o principal objetivo do sistema? <span>*</span></label>
+              <textarea id="mainGoal" name="mainGoal" rows="4" required></textarea>
+              <small class="error-message">Descreva o principal objetivo do sistema.</small>
+            </div>
+
+            <div class="field">
+              <label for="problemToSolve">Qual problema você deseja resolver? <span>*</span></label>
+              <textarea id="problemToSolve" name="problemToSolve" rows="4" required></textarea>
+              <small class="error-message">Descreva o problema que precisa ser resolvido.</small>
+            </div>
+
+            <div class="field-grid two-columns compact-grid">
+              <div class="field">
+                <label for="systemUsers">Quem utilizará o sistema? <span>*</span></label>
+                <input id="systemUsers" name="systemUsers" type="text" required />
+                <small class="error-message">Informe quem utilizará o sistema.</small>
+              </div>
+
+              <div class="field">
+                <label for="userCount">Quantas pessoas utilizarão o sistema? <span>*</span></label>
+                <input id="userCount" name="userCount" type="number" min="1" step="1" required />
+                <small class="error-message">Informe a quantidade estimada de usuários.</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="features-title">
+          <div class="section-heading">
+            <span class="section-number">03</span>
+            <div>
+              <h3 id="features-title">Funcionalidades desejadas</h3>
+              <p>Marque todos os recursos que devem ser considerados no escopo inicial.</p>
+            </div>
+          </div>
+
+          <fieldset class="checkbox-grid" id="featuresGroup">
+            <legend class="sr-only">Funcionalidades desejadas</legend>
+          </fieldset>
+
+          <div class="field other-field" id="otherFeatureWrap" hidden>
+            <label for="otherFeature">Outra funcionalidade</label>
+            <input id="otherFeature" name="otherFeature" type="text" />
+          </div>
+
+          <div class="field">
+            <label for="featureDetails">
+              Descreva detalhadamente tudo o que você deseja que o sistema faça.
+              <span>*</span>
+            </label>
+            <textarea id="featureDetails" name="featureDetails" rows="7" required></textarea>
+            <small class="error-message">Informe os detalhes esperados para o sistema.</small>
+          </div>
+
+          <p class="notice">
+            Funcionalidades não informadas neste formulário podem não estar inclusas no orçamento inicial.
+          </p>
+        </section>
+
+        <section class="form-section" aria-labelledby="references-title">
+          <div class="section-heading">
+            <span class="section-number">04</span>
+            <div>
+              <h3 id="references-title">Referências</h3>
+              <p>Sistemas, sites ou fluxos que ajudem a entender a direção desejada.</p>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="similarSystem">Existe algum sistema parecido que você utiliza ou gosta?</label>
+              <textarea id="similarSystem" name="similarSystem" rows="4"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="referenceLinks">Links de referência</label>
+              <textarea id="referenceLinks" name="referenceLinks" rows="3" placeholder="Cole um link por linha"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="integrations-title">
+          <div class="section-heading">
+            <span class="section-number">05</span>
+            <div>
+              <h3 id="integrations-title">Integrações</h3>
+              <p>Serviços externos que precisam se comunicar com a solução.</p>
+            </div>
+          </div>
+
+          <fieldset class="checkbox-grid" id="integrationsGroup">
+            <legend class="sr-only">Integrações desejadas</legend>
+          </fieldset>
+
+          <div class="field other-field" id="otherIntegrationWrap" hidden>
+            <label for="otherIntegration">Outra integração</label>
+            <input id="otherIntegration" name="otherIntegration" type="text" />
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="deadline-title">
+          <div class="section-heading">
+            <span class="section-number">06</span>
+            <div>
+              <h3 id="deadline-title">Prazo</h3>
+              <p>Datas e nível de urgência para planejamento da entrega.</p>
+            </div>
+          </div>
+
+          <div class="field-grid two-columns">
+            <div class="field">
+              <label for="deadline">Existe uma data limite para entrega?</label>
+              <input id="deadline" name="deadline" type="date" />
+            </div>
+
+            <div class="field">
+              <span class="field-label">Qual a urgência do projeto? <span>*</span></span>
+              <div class="segmented-options" id="urgencyGroup" role="radiogroup" aria-label="Urgência do projeto"></div>
+              <small class="error-message">Selecione a urgência do projeto.</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="budget-title">
+          <div class="section-heading">
+            <span class="section-number">07</span>
+            <div>
+              <h3 id="budget-title">Orçamento</h3>
+              <p>Faixa de investimento prevista para orientar a proposta comercial.</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Possui uma faixa de investimento prevista? <span>*</span></span>
+            <div class="radio-stack" id="budgetGroup" role="radiogroup" aria-label="Faixa de investimento prevista"></div>
+            <small class="error-message">Selecione uma faixa de investimento.</small>
+          </div>
+        </section>
+
+        <section class="form-section confirmation-section" aria-labelledby="confirmation-title">
+          <div class="section-heading">
+            <span class="section-number">08</span>
+            <div>
+              <h3 id="confirmation-title">Confirmação</h3>
+              <p>Validação final das informações enviadas para análise técnica.</p>
+            </div>
+          </div>
+
+          <label class="check-card required-check">
+            <input id="confirmation" name="confirmation" type="checkbox" required />
+            <span class="custom-check" aria-hidden="true"></span>
+            <span>Declaro que informei todas as funcionalidades desejadas para este projeto.</span>
+          </label>
+          <small class="error-message">A confirmação é obrigatória para enviar o formulário.</small>
+        </section>
+
+        <div class="submit-bar">
+          <p>As respostas serão salvas localmente e podem ser conectadas futuramente a Supabase ou outro banco de dados.</p>
+          <button class="submit-button" type="submit">
+            <span>Enviar levantamento</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h13m0 0-5-5m5 5-5 5" />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <dialog class="success-dialog" id="successDialog" aria-labelledby="successTitle">
+      <div class="success-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="m5 12 4 4L19 6" />
+        </svg>
+      </div>
+      <h2 id="successTitle">Obrigado pelo envio!</h2>
+      <p>
+        A equipe da Aureon Sistemas analisará as informações e retornará com uma
+        proposta comercial e escopo detalhado para aprovação.
+      </p>
+      <button class="dialog-button" id="closeDialog" type="button">Fechar</button>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
