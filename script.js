@@ -90,6 +90,63 @@ function startIntro() {
   introSkipButton?.addEventListener("click", finishIntro, { once: true });
 }
 
+function initScrollReveal() {
+  const revealItems = [
+    document.querySelector(".form-header"),
+    ...document.querySelectorAll(".form-section"),
+    document.querySelector(".submit-bar"),
+  ].filter(Boolean);
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  revealItems.forEach((item, index) => {
+    item.classList.add("reveal-ready");
+    item.style.setProperty("--reveal-delay", `${Math.min(index * 42, 180)}ms`);
+  });
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  window.setTimeout(() => {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  }, 3200);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -10% 0px",
+      threshold: 0.12,
+    },
+  );
+
+  revealItems.forEach((item) => observer.observe(item));
+}
+
+function initInteractiveSurfaces() {
+  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (isTouchDevice || prefersReducedMotion) return;
+
+  document.querySelectorAll(".intro-panel, .project-form").forEach((surface) => {
+    surface.addEventListener("pointermove", (event) => {
+      const rect = surface.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+      surface.style.setProperty("--pointer-x", `${x}%`);
+      surface.style.setProperty("--pointer-y", `${y}%`);
+    });
+  });
+}
+
 function createChoiceCard({ type, name, value }) {
   const label = document.createElement("label");
   label.className = type === "checkbox" ? "check-card" : "radio-card";
@@ -345,6 +402,8 @@ renderChoiceGroup("budgetGroup", BUDGET_OPTIONS, "radio", "budget");
 
 restoreDraft();
 updateConditionalFields();
+initScrollReveal();
+initInteractiveSurfaces();
 
 form.addEventListener("input", (event) => {
   const target = event.target;
