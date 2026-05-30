@@ -3,6 +3,8 @@ const STORAGE_KEYS = {
   submissions: "aureon:project-intake:submissions",
 };
 
+const AUREON_WHATSAPP_NUMBER = "559198240022";
+
 const FEATURE_OPTIONS = [
   "Cadastro de clientes",
   "Controle financeiro",
@@ -377,6 +379,70 @@ function saveSubmission(payload) {
   return saved;
 }
 
+function formatList(values, otherValue = "") {
+  const items = [...values];
+  if (otherValue) items.push(`Outro: ${otherValue}`);
+  return items.length ? items.join(", ") : "Não informado";
+}
+
+function formatValue(value) {
+  return value || "Não informado";
+}
+
+function buildWhatsAppMessage(payload) {
+  const sentAt = new Date(payload.submittedAt).toLocaleString("pt-BR");
+
+  return [
+    "*Novo levantamento de projeto - Aureon Sistemas*",
+    `Enviado em: ${sentAt}`,
+    "",
+    "*1. Dados do cliente*",
+    `Nome completo: ${formatValue(payload.client.fullName)}`,
+    `Empresa: ${formatValue(payload.client.companyName)}`,
+    `WhatsApp: ${formatValue(payload.client.whatsapp)}`,
+    `E-mail: ${formatValue(payload.client.email)}`,
+    "",
+    "*2. Sobre o projeto*",
+    `Objetivo principal: ${formatValue(payload.project.mainGoal)}`,
+    `Problema a resolver: ${formatValue(payload.project.problemToSolve)}`,
+    `Quem utilizará: ${formatValue(payload.project.systemUsers)}`,
+    `Quantidade de usuários: ${formatValue(payload.project.userCount)}`,
+    "",
+    "*3. Funcionalidades desejadas*",
+    `Marcadas: ${formatList(payload.scope.features, payload.scope.otherFeature)}`,
+    `Detalhamento: ${formatValue(payload.scope.featureDetails)}`,
+    "",
+    "*4. Referências*",
+    `Sistema parecido: ${formatValue(payload.references.similarSystem)}`,
+    `Links: ${formatValue(payload.references.referenceLinks)}`,
+    "",
+    "*5. Integrações*",
+    `Integrações: ${formatList(payload.integrations.selected, payload.integrations.otherIntegration)}`,
+    "",
+    "*6. Prazo*",
+    `Data limite: ${formatValue(payload.timing.deadline)}`,
+    `Urgência: ${formatValue(payload.timing.urgency)}`,
+    "",
+    "*7. Orçamento*",
+    `Faixa prevista: ${formatValue(payload.budget)}`,
+    "",
+    "*8. Confirmação*",
+    payload.confirmation
+      ? "Cliente declarou que informou todas as funcionalidades desejadas."
+      : "Confirmação não marcada.",
+  ].join("\n");
+}
+
+function openWhatsAppSubmission(payload) {
+  const message = buildWhatsAppMessage(payload);
+  const url = `https://wa.me/${AUREON_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  const openedWindow = window.open(url, "_blank", "noopener,noreferrer");
+
+  if (!openedWindow) {
+    window.location.href = url;
+  }
+}
+
 function showSuccessMessage() {
   if (typeof successDialog.showModal === "function") {
     successDialog.showModal();
@@ -446,7 +512,8 @@ form.addEventListener("submit", (event) => {
   const payload = collectFormData();
   saveSubmission(payload);
   storage.remove(STORAGE_KEYS.draft);
-  draftStatus.textContent = "Formulário enviado e salvo localmente.";
+  draftStatus.textContent = "Formulário salvo e encaminhado para o WhatsApp.";
+  openWhatsAppSubmission(payload);
   showSuccessMessage();
 });
 
