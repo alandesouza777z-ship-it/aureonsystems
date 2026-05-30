@@ -4,8 +4,8 @@
   "private": true,
   "description": "Formulario de levantamento de requisitos para projetos da Aureon Sistemas.",
   "scripts": {
-    "build": "echo Static site ready",
-    "start": "npx serve ."
+    "build": "node scripts/build.mjs",
+    "start": "npx serve public"
   },
   "keywords": [
     "aureon",
@@ -15,4 +15,3 @@
   ],
   "license": "UNLICENSED"
 }
-

@@ -3,4 +3,3 @@ outputs/
 .git/
 node_modules/
 *.log
-

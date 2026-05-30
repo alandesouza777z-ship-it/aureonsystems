@@ -14,8 +14,7 @@ Pagina profissional de levantamento de requisitos para clientes da Aureon Sistem
 
 1. Importe este repositorio na Vercel.
 2. Framework preset: `Other`.
-3. Build command: deixe vazio ou use `npm run build`.
-4. Output directory: deixe vazio ou use `.`.
+3. Build command: `npm run build`.
+4. Output directory: `public`.
 
 O projeto e estatico e nao depende de backend para funcionar. A integracao futura com Supabase pode ser feita no ponto indicado em `script.js`, dentro da funcao `saveSubmission`.
-

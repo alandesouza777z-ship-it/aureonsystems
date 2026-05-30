@@ -1,6 +1,6 @@
 work/
 outputs/
+public/
 .vercel/
 node_modules/
 *.log
-
