@@ -9,9 +9,33 @@
     />
     <title>Levantamento de Projeto - Aureon Sistemas</title>
     <link rel="icon" type="image/jpeg" href="./assets/aureon-logo.jpg" />
+    <script>
+      document.documentElement.classList.add("intro-enabled");
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <section class="app-intro" id="appIntro" aria-label="Intro da Aureon Sistemas">
+      <div class="intro-grid" aria-hidden="true"></div>
+      <div class="intro-orbit" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="intro-content">
+        <div class="intro-logo-wrap">
+          <img src="./assets/aureon-logo.jpg" alt="Logo da Aureon Sistemas" />
+        </div>
+        <p class="intro-kicker">Aureon Sistemas</p>
+        <h2>Preparando seu levantamento técnico</h2>
+        <p class="intro-subtitle">Sistemas, sites, automações e soluções digitais</p>
+        <div class="intro-progress" aria-hidden="true">
+          <span></span>
+        </div>
+        <button class="intro-skip" id="introSkip" type="button">Entrar</button>
+      </div>
+    </section>
+
     <main class="page-shell">
       <section class="intro-panel" aria-labelledby="page-title">
         <div class="brand-lockup" aria-label="Aureon Sistemas">

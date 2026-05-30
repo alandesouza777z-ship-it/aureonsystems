@@ -44,6 +44,8 @@ const form = document.querySelector("#projectForm");
 const draftStatus = document.querySelector("#draftStatus");
 const successDialog = document.querySelector("#successDialog");
 const closeDialogButton = document.querySelector("#closeDialog");
+const appIntro = document.querySelector("#appIntro");
+const introSkipButton = document.querySelector("#introSkip");
 
 const storage = {
   get(key, fallback) {
@@ -71,6 +73,22 @@ const storage = {
     return true;
   },
 };
+
+function finishIntro() {
+  document.documentElement.classList.add("intro-complete");
+  window.setTimeout(() => {
+    appIntro?.setAttribute("aria-hidden", "true");
+    if (appIntro) appIntro.hidden = true;
+  }, 560);
+}
+
+function startIntro() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const introDuration = prefersReducedMotion ? 450 : 2850;
+
+  window.setTimeout(finishIntro, introDuration);
+  introSkipButton?.addEventListener("click", finishIntro, { once: true });
+}
 
 function createChoiceCard({ type, name, value }) {
   const label = document.createElement("label");
@@ -376,3 +394,5 @@ form.addEventListener("submit", (event) => {
 closeDialogButton.addEventListener("click", () => {
   successDialog.close();
 });
+
+startIntro();
